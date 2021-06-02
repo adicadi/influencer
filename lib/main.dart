@@ -19,7 +19,7 @@ class _MyAppState extends State<MyApp> {
       title: 'Influencer',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primaryColor: HexColor('4661df'),
+        primaryColor: HexColor('1f34a3'),
       ),
       home: MyHomePage(title: 'Influencer'),
     );
@@ -45,67 +45,7 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         brightness: Brightness.light,
         toolbarHeight: MediaQuery.of(context).size.height * 0.1,
-        title: Container(
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Row(
-                children: [
-                  Icon(Icons.menu),
-                  Padding(
-                    padding: const EdgeInsets.fromLTRB(10, 0, 70, 0),
-                    child: Text(widget.title),
-                  ),
-                ],
-              ),
-              Row(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.fromLTRB(80, 0, 20, 0),
-                    child: Container(
-                      child: Stack(
-                        children: [
-                          Container(
-                            height: 50,
-                            decoration: BoxDecoration(
-                                shape: BoxShape.circle,
-                                border: Border.all(color: Colors.white)),
-                            child: CircleAvatar(
-                              radius: 20,
-                              backgroundImage: NetworkImage(avatar),
-                            ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(top: 34, left: 1),
-                            child: Container(
-                              width: 42,
-                              child: Card(
-                                color: Colors.pink[300],
-                                child: Padding(
-                                  padding: const EdgeInsets.symmetric(
-                                      horizontal: 2, vertical: 1),
-                                  child: Text(
-                                    'Live',
-                                    textAlign: TextAlign.center,
-                                    style: TextStyle(color: Colors.white),
-                                  ),
-                                ),
-                              ),
-                            ),
-                          )
-                        ],
-                      ),
-                    ),
-                  ),
-                  SizedBox(
-                    height: 20,
-                    child: Image.asset('assets/dm.png'),
-                  ),
-                ],
-              ),
-            ],
-          ),
-        ),
+        title: AppBarItem(widget: widget, avatar: avatar),
       ),
       body: Container(
         child: SingleChildScrollView(
@@ -114,7 +54,7 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       extendBody: true,
       bottomNavigationBar: FloatingNavbar(
-        backgroundColor: HexColor('4661df'),
+        backgroundColor: HexColor('1f34a3'),
         selectedBackgroundColor: HexColor('4661df'),
         selectedItemColor: Colors.white,
         itemBorderRadius: 50,
@@ -127,6 +67,90 @@ class _MyHomePageState extends State<MyHomePage> {
           FloatingNavbarItem(
               icon: Icons.photo_size_select_actual_outlined, title: 'Gallery'),
           FloatingNavbarItem(icon: Icons.person_outlined, title: 'Lisa'),
+        ],
+      ),
+    );
+  }
+}
+
+class AppBarItem extends StatelessWidget {
+  const AppBarItem({
+    Key? key,
+    required this.widget,
+    required this.avatar,
+  }) : super(key: key);
+
+  final MyHomePage widget;
+  final String avatar;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Row(
+            children: [
+              Icon(
+                Icons.menu,
+                size: 30,
+              ),
+              Padding(
+                padding: const EdgeInsets.fromLTRB(15, 0, 0, 0),
+                child: Text(widget.title),
+              ),
+            ],
+          ),
+          Row(
+            children: [
+              Padding(
+                padding: const EdgeInsets.fromLTRB(0, 0, 20, 0),
+                child: Container(
+                  child: Stack(
+                    children: [
+                      Container(
+                        height: 50,
+                        width: 45,
+                        decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            border: Border.all(color: Colors.white)),
+                        child: CircleAvatar(
+                          radius: 21,
+                          backgroundColor: Colors.white54,
+                          child: CircleAvatar(
+                            radius: 20,
+                            backgroundImage: NetworkImage(avatar),
+                          ),
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(top: 34, left: 1),
+                        child: Container(
+                          width: 42,
+                          child: Card(
+                            color: Colors.pink[300],
+                            child: Padding(
+                              padding: const EdgeInsets.symmetric(
+                                  horizontal: 2, vertical: 1),
+                              child: Text(
+                                'Live',
+                                textAlign: TextAlign.center,
+                                style: TextStyle(color: Colors.white),
+                              ),
+                            ),
+                          ),
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+              ),
+              SizedBox(
+                height: 20,
+                child: Image.asset('assets/dm.png'),
+              ),
+            ],
+          ),
         ],
       ),
     );

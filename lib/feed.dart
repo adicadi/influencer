@@ -44,7 +44,7 @@ class _FeedState extends State<Feed> {
         Padding(
           padding: const EdgeInsets.all(8.0),
           child: Card(
-            elevation: 10,
+            elevation: 8,
             shape:
                 RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
             child: Container(
@@ -228,7 +228,7 @@ class _FeedState extends State<Feed> {
         Padding(
           padding: const EdgeInsets.all(8.0),
           child: Card(
-            elevation: 10,
+            elevation: 8,
             shape:
                 RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
             child: Container(

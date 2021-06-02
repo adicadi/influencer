@@ -17,6 +17,7 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Influencer',
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primaryColor: HexColor('4661df'),
       ),
